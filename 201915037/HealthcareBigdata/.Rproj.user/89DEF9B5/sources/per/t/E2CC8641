@@ -1,0 +1,28 @@
+{
+    "id": "E2CC8641",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1670326207329.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "id": "883dac50751e4bb99a71a91828393118",
+        "name": "camodel",
+        "title": "camodel",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7957705966486450025,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1670326207329,
+    "read_only": false,
+    "read_only_alternatives": []
+}
