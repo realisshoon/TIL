@@ -1,8 +1,3 @@
-const player={
-    name: "austin",
-    sayHello: function(otherPersonsName){
-        console.log("Hello"+otherPersonsName+"nice to meet you!");
-    },
-};
+const title=document.getElementById("title");
 
-player.sayHello("lynn");
+console.dir(title);
