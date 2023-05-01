@@ -1,0 +1,44 @@
+[INSERT MODE]
+i : insert(커서 앞)
+a : append(커서 뒤)
+l : 문장시작
+A : 문장끝
+
+[NAVIGATION]
+H : left
+J : down
+K : up
+L : right
+0 : 문장 앞으로 이동
+$ : 문장 뒤로 이동
+w : word
+b : backwar
+H : 화면 위
+M : 화면 중간
+L : 화면 끝
+gg : 파일 앞
+G : 파일 끝
+
+[명령어]
+x : 커서 아래 글자 삭제
+dd : 문장 삭제
+yy : 문장 복사
+p : 붙여넣기
+*p : 클립보드 붙여넣기
+
+[Command + Object]
+d		
+y 	+	 3w,3b,aw,at,ap,as,it,i",ip
+c
+
+위의 명령어를 반복 가능
+
+. : 이전 명령 반복
+u : 되감기
+ctrl R : 앞감
+
+
+
+
+
+
