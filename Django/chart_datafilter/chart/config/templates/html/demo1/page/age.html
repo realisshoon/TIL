@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>연령 360</title>
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/assets/scss/age.css">
+</head>
+<body>
+    <div class="filter-area">
+        <button id="filterBtn">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="18" viewBox="0 0 21 18" fill="none">
+    <rect y="2" width="21" height="1.5" rx="0.75" fill="black"/>
+    <circle cx="6" cy="3" r="2.25" fill="#D7E6FE" stroke="black" stroke-width="1.5"/>
+    <rect y="14" width="21" height="1.5" rx="0.75" fill="black"/>
+    <circle cx="6" cy="15" r="2.25" fill="#D7E6FE" stroke="black" stroke-width="1.5"/>
+    <rect width="21" height="1.5" rx="0.75" transform="matrix(-1 0 0 1 21 8)" fill="black"/>
+    <circle cx="3" cy="3" r="2.25" transform="matrix(-1 0 0 1 18 6)" fill="#D7E6FE" stroke="black" stroke-width="1.5"/>
+</svg>
+            </span>
+            <p>Filter</p>
+        </button>
+        <div id="modalContent" class="filter-wrap">
+            <div class="tit">
+                <p>필터 선택</p>
+                <span id="closeBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M1 1L13.5 13.5" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M13.5 1L1 13.5" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="filter-group">
+                <form class="filter">
+                    <label>데이터 기준</label>
+                    <select class="data">
+                        <option>구매수량</option>
+                        <option>실매출</option>
+                        <option>소진율</option>
+                        <option>점유율</option>
+                    </select>
+                    <select class="data">
+                        <option>보조품번</option>
+                    </select>
+                </form>
+                <div class="filter">
+                    <label>선택날짜</label>
+                    <div class="date">
+                        <input type="date">
+                        <input type="date">
+                    </div>
+                </div>
+                <div class="filter">
+                    <label>연령</label>
+                    <select>
+                        <option>전체</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label>사업부명</label>
+                    <select>
+                        <option>전체</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label>판매과</label>
+                    <select>
+                        <option>전체</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label>매장명</label>
+                    <select>
+                        <option>전체</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label>브랜드</label>
+                    <select>
+                        <option>전체</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label>스타일</label>
+                    <select>
+                        <option>전체</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label>품종</label>
+                    <select>
+                        <option>전체</option>
+                    </select>
+                </div>
+                <button>적용하기</button>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard">
+        <div class="layout">
+            <div class="box rank">
+                <h3>가장 많이 팔리는 품번</h3>
+                <ul class="rank-list">
+                    <li>
+                        <p><b>1</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>2</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>3</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>4</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>5</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>6</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>7</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>8</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>9</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>10</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="box chart">
+                <h3>가장 많이 팔리는 품번</h3>
+                <div class="summary-wrap">
+                    <div class="summary">
+                        <span>품번</span>
+                            <!--salesforce product link / 현재는 임시-->
+                            <a href="https://venus-crm.lightning.force.com/lightning/r/Product2/01t2w00000GZgB0AAL/view" target="_blank">
+                                <p>VBR2200</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                     fill="none">
+                                    <path d="M0 3C0 1.34315 1.34315 0 3 0H17C18.6569 0 20 1.34315 20 3V17C20 18.6569 18.6569 20 17 20H3C1.34315 20 0 18.6569 0 17V3Z"
+                                          fill="#EEF4FF"/>
+                                    <path d="M5.46967 14.4697C5.17678 14.7626 5.17678 15.2374 5.46967 15.5303C5.76256 15.8232 6.23744 15.8232 6.53033 15.5303L5.46967 14.4697ZM15.75 6C15.75 5.58579 15.4142 5.25 15 5.25H8.25C7.83579 5.25 7.5 5.58579 7.5 6C7.5 6.41421 7.83579 6.75 8.25 6.75H14.25V12.75C14.25 13.1642 14.5858 13.5 15 13.5C15.4142 13.5 15.75 13.1642 15.75 12.75V6ZM6.53033 15.5303L15.5303 6.53033L14.4697 5.46967L5.46967 14.4697L6.53033 15.5303Z"
+                                          fill="#0057FF"/>
+                                </svg>
+                            </a>
+                    </div>
+                    <div class="summary">
+                        <!--  전체 구매수량은 filter 영향 X-->
+                        <span>전체 구매수량</span>
+                        <p>000개</p>
+                    </div>
+                    <div class="summary">
+                        <!--  전체 생산수량은 filter 영향 X-->
+                        <span>전체 생산수량</span>
+                        <p>000개</p>
+                    </div>
+                    <div class="summary">
+                        <span>구매수량</span>
+                        <p>000개</p>
+                    </div>
+                    <div class="summary">
+                        <span>생산수량</span>
+                        <p>000개</p>
+                    </div>
+                    <div class="summary">
+                        <span>평균 실매출 (1년 기준)</span>
+                        <!--?                    숫자 컴마처리-->
+                        <p>000원</p>
+                    </div>
+                    <div class="summary">
+                        <span>소진율</span>
+                        <!--?                    소수점 1자리 처리-->
+                        <p>79.23%</p>
+                    </div>
+                    <div class="summary">
+                        <span>점유율</span>
+                        <p>79.23%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout">
+            <div class="box rank">
+                <h3>가장 많이 구매하는 지역</h3>
+                <ul class="rank-list">
+                    <li>
+                        <p><b>1</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>2</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>3</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>4</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>5</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>6</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>7</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>8</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>9</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                    <li>
+                        <p><b>10</b>VBR9392</p>
+                        <span>1244개</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="box chart">
+                <h3>지역별 판매 매장 순위</h3>
+            </div>
+        </div>
+        <div class="layout">
+            <div class="box chart one">
+                <h3>휫팅수</h3>
+                <div class="summary-wrap">
+                    <div class="summary">
+                        <span>휘팅을 한 고객수</span>
+                        <p>00명</p>
+                    </div>
+                    <div class="summary">
+                        <span>제일 높은 나이대</span>
+                        <p>00-00세</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var openBtn = document.getElementById('filterBtn');
+        var content = document.getElementById('modalContent');
+        var closeBtn = document.getElementById('closeBtn');
+
+        openBtn.addEventListener('click', function () {
+            content.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', function () {
+            content.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

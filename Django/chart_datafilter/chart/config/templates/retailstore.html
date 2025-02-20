@@ -1,0 +1,316 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/static/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/retailstore.css" type="text/css" />
+    <link rel="icon" href="/static/image/favicon.ico">
+    <title>신영와코루 매장360 신규가입률 현황</title>
+</head>
+<body>
+    <div class="wrap">
+        <h1 class="tit">
+           구매회차별 고객
+        </h1>
+
+        <div class="main">
+            
+            <div class="donut_chart">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <!--차트 범례-->
+            <div class="chart_name">
+                <div class="chart_md">
+                    <p>고객 중분류</p>
+                    <ul>
+                        <li><span class="chart_color1"></span><p class="chart_text">기존 멤버</p></li>
+                        <li><span class="chart_color2"></span><p class="chart_text">신규 멤버</p></li>
+                    </ul>
+                </div>
+
+                <div class="chart_sm">
+                    <p>고객 중분류 및 고객 소분류</p>
+                    <ul>
+                        <li><span class="chart_color4"></span><p class="chart_text">기존 멤버, 기존 충성 고객</p></li>
+                        <li><span class="chart_color9"></span><p class="chart_text">기존 멤버, 기존 첫구매 고객</p></li>
+                        <li><span class="chart_color3"></span><p class="chart_text">기존 멤버, 기존 안정 고객</p></li>
+                        <li><span class="chart_color7"></span><p class="chart_text">기존 멤버, 복귀 고객</p></li>
+                        <li><span class="chart_color6"></span><p class="chart_text">기존 멤버, 기존 재구매 고객</p></li>
+                    </ul>
+                </div>
+            </div>
+            <!--//차트 범례-->
+
+            <div class="tooltip">
+                <div class="tooltip_box"><p>지수 설명</p><span class="justice_btn tooltip-left">?</span></div>
+                <span class="tooltiptext tooltip-left">
+                    • AUS : (최근 1년 기간) 1인 구매 금액의 평균(객단가)	<br/>
+                    • IPT : (최근 1년 이내) 1인 구매 개수의 평균	<br/>
+                    • IPS : (최근 1년의 기간) 1인 1개의 아이템 구매금액	<br/>
+                    • 평균 구매횟수 : (최근 1년 기간) 1인당 평균 아이템 구매횟수<br/>
+                    • ATV : (최근 1년 기간) 1회 구매금액 평균(회단가)
+                </span>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th class="table-width">고객 중분류</th>
+                        <th class="line_right1">고객 소분류</th>
+                        <th>고객 수(명)</th>
+                        <th>고객 수 비중(%)</th>
+                        <th>구매 금액(원)</th>
+                        <th>AUS</th>
+                        <th>수량(반품포함)</th>
+                        <th>IPT</th>
+                        <th>IPS</th>
+                        <th>구매 횟수 합산</th>
+                        <th>평균 구매 횟수</th>
+                        <th>ATV</th>
+                    </tr>
+                </thead>
+
+                <tbody class="tbody_top">
+                    <!--기존 멤버-->
+                    <tr>
+                        <td rowspan="5" class="align_left line_bottom table-width">기존 멤버
+                            <div class="tooltip"><span class="justice_btn">?</span>
+                              <span class="tooltiptext tooltip-right">
+                                  • 기존 충성 고객 : 최근 1년 이내 5회 이상 구매한 고객(전년 1년 이내 구매있음)<br/>
+                                  • 기존 안전 고객 : 최근 1년 이내 3회 이상 구매한 고객(전년 1년 이내 구매있음)<br/>
+                                  • 기존 재구매 고객 : 최근 1년 이내 2회 이상 구매한 고객(전년 1년 이내 구매있음)<br/>
+                                  • 기존 첫구매 고객 : 최근 1년 이내 1회만 구매한 고객(전년 1년 이내 구매있음)<br/>
+                                  • 복귀 고객 : 이탈(1년 미구매) 후 구매고객
+                              </span>
+                            </div>
+                        </td>
+                        <td class="align_left line_right1">기존 충성 고객</td>
+                        <td>{{ result.기존충성고객.고객수|intcomma }} 명</td>
+                        <td>{{ result.기존충성고객.고객수비중 }} %</td>
+                        <td>{{ result.기존충성고객.구매금액|intcomma }} 원</td>
+                        <td>₩{{ result.기존충성고객.AUS|intcomma }}</td>
+                        <td>{{ result.기존충성고객.구매수량|intcomma }}</td>
+                        <td>{{ result.기존충성고객.IPT|intcomma }}</td>
+                        <td>₩{{ result.기존충성고객.IPS|intcomma }}</td>
+                        <td>{{ result.기존충성고객.구매횟수합산|intcomma }}</td>
+                        <td>{{ result.기존충성고객.평균구매횟수|intcomma }}</td>
+                        <td>₩{{ result.기존충성고객.ATV|intcomma }}</td>
+                    </tr>
+                    <tr class="table_background">
+                        <td class="align_left line_right1">기존 안정 고객</td>
+                        <td>{{ result.기존안정고객.고객수|intcomma }} 명</td>
+                        <td>{{ result.기존안정고객.고객수비중 }} %</td>
+                        <td>{{ result.기존안정고객.구매금액|intcomma }} 원</td>
+                        <td>₩{{ result.기존안정고객.AUS|intcomma }}</td>
+                        <td>{{ result.기존안정고객.구매수량|intcomma }}</td>
+                        <td>{{ result.기존안정고객.IPT|intcomma }}</td>
+                        <td>₩{{ result.기존안정고객.IPS|intcomma }}</td>
+                        <td>{{ result.기존안정고객.구매횟수합산|intcomma }}</td>
+                        <td>{{ result.기존안정고객.평균구매횟수|intcomma }}</td>
+                        <td>₩{{ result.기존안정고객.ATV|intcomma }}</td>
+                    </tr>
+                    <tr>
+                        <td class="align_left line_right1">기존 재구매 고객</td>
+                        <td>{{ result.기존재구매고객.고객수|intcomma }} 명</td>
+                        <td>{{ result.기존재구매고객.고객수비중 }} %</td>
+                        <td>{{ result.기존재구매고객.구매금액|intcomma }} 원</td>
+                        <td>₩{{ result.기존재구매고객.AUS|intcomma }}</td>
+                        <td>{{ result.기존재구매고객.구매수량|intcomma }}</td>
+                        <td>{{ result.기존재구매고객.IPT|intcomma }}</td>
+                        <td>₩{{ result.기존재구매고객.IPS|intcomma }}</td>
+                        <td>{{ result.기존재구매고객.구매횟수합산|intcomma }}</td>
+                        <td>{{ result.기존재구매고객.평균구매횟수|intcomma }}</td>
+                        <td>₩{{ result.기존재구매고객.ATV|intcomma }}</td>
+                    </tr>
+                    <tr class="table_background">
+                        <td class="align_left line_right1">기존 첫구매 고객</td>
+                        <td>{{ result.기존첫구매고객.고객수|intcomma }} 명</td>
+                        <td>{{ result.기존첫구매고객.고객수비중 }} %</td>
+                        <td>{{ result.기존첫구매고객.구매금액|intcomma }} 원</td>
+                        <td>₩{{ result.기존첫구매고객.AUS|intcomma }}</td>
+                        <td>{{ result.기존첫구매고객.구매수량|intcomma }}</td>
+                        <td>{{ result.기존첫구매고객.IPT|intcomma }}</td>
+                        <td>₩{{ result.기존첫구매고객.IPS|intcomma }}</td>
+                        <td>{{ result.기존첫구매고객.구매횟수합산|intcomma }}</td>
+                        <td>{{ result.기존첫구매고객.평균구매횟수|intcomma }}</td>
+                        <td>₩{{ result.기존첫구매고객.ATV|intcomma }}</td>
+                    </tr>
+                    <tr class="line_bottom">
+                        <td class="align_left line_right1">복귀 고객</td>
+                        <td>{{ result.복귀고객.고객수|intcomma }} 명</td>
+                        <td>{{ result.복귀고객.고객수비중 }} %</td>
+                        <td>{{ result.복귀고객.구매금액|intcomma }} 원</td>
+                        <td>₩{{ result.복귀고객.AUS|intcomma }}</td>
+                        <td>{{ result.복귀고객.구매수량|intcomma }}</td>
+                        <td>{{ result.복귀고객.IPT|intcomma }}</td>
+                        <td>₩{{ result.복귀고객.IPS|intcomma }}</td>
+                        <td>{{ result.복귀고객.구매횟수합산|intcomma }}</td>
+                        <td>{{ result.복귀고객.평균구매횟수|intcomma }}</td>
+                        <td>₩{{ result.복귀고객.ATV|intcomma }}</td>
+                    </tr>
+                    <!--//기존 멤버-->
+
+                    <!--신규 멤버-->
+                    <tr>
+                        <td rowspan="2" class="align_left line_bottom table-width">신규 멤버
+                            <div class="tooltip"><span class="justice_btn">?</span>
+                              <span class="tooltiptext tt_2 tooltip-right">
+                                  • 신규 재구매 고객 : 최근 1년 이내 신규 가입후 2회 이상 구매 고객<br/>
+                                  • 신규 첫구매 고객 : 최근 1년 이내 신규 가입 후 첫구매만 있는 고객
+                              </span>
+                            </div>
+                        </td>
+                        <td class="align_left line_right1">신규 재구매 고객</td>
+                        <td>{{ result.신규재구매고객.고객수|intcomma }} 명</td>
+                        <td>{{ result.신규재구매고객.고객수비중 }} %</td>
+                        <td>{{ result.신규재구매고객.구매금액|intcomma }} 원</td>
+                        <td>₩{{ result.신규재구매고객.AUS|intcomma }}</td>
+                        <td>{{ result.신규재구매고객.구매수량|intcomma }}</td>
+                        <td>{{ result.신규재구매고객.IPT|intcomma }}</td>
+                        <td>₩{{ result.신규재구매고객.IPS|intcomma }}</td>
+                        <td>{{ result.신규재구매고객.구매횟수합산|intcomma }}</td>
+                        <td>{{ result.신규재구매고객.평균구매횟수|intcomma }}</td>
+                        <td>₩{{ result.신규재구매고객.ATV|intcomma }}</td>
+                    </tr>
+                    <tr class="line_bottom">
+                        <td class="align_left line_right1 table_background">신규 첫구매 고객</td>
+                        <td>{{ result.신규첫구매고객.고객수|intcomma }} 명</td>
+                        <td>{{ result.신규첫구매고객.고객수비중 }} %</td>
+                        <td>{{ result.신규첫구매고객.구매금액|intcomma }} 원</td>
+                        <td>₩{{ result.신규첫구매고객.AUS|intcomma }}</td>
+                        <td>{{ result.신규첫구매고객.구매수량|intcomma }}</td>
+                        <td>{{ result.신규첫구매고객.IPT|intcomma }}</td>
+                        <td>₩{{ result.신규첫구매고객.IPS|intcomma }}</td>
+                        <td>{{ result.신규첫구매고객.구매횟수합산|intcomma }}</td>
+                        <td>{{ result.신규첫구매고객.평균구매횟수|intcomma }}</td>
+                        <td>₩{{ result.신규첫구매고객.ATV|intcomma }}</td>
+                    </tr>
+                    <!--//신규 멤버-->
+
+                    <!--총합계-->
+                    <tr class="line_bottom">
+                        <td colspan="2" class="align_left line_right1 table-width">총 합계</td>
+                        <td>{{ result.총합계.고객수|intcomma }} 명</td>
+                        <td>{{ result.총합계.고객수비중 }} %</td>
+                        <td>{{ result.총합계.구매금액|intcomma }} 원</td>
+                        <td>₩{{ result.총합계.AUS|intcomma }}</td>
+                        <td>{{ result.총합계.구매수량|intcomma }}</td>
+                        <td>{{ result.총합계.IPT|intcomma }}</td>
+                        <td>₩{{ result.총합계.IPS|intcomma }}</td>
+                        <td>{{ result.총합계.구매횟수합산|intcomma }}</td>
+                        <td>{{ result.총합계.평균구매횟수|intcomma }}</td>
+                        <td>₩{{ result.총합계.ATV|intcomma }}</td>
+                    </tr>
+                    <!--//총합계-->
+                </tbody>
+{#                <table>#}
+{#                    <tbody class="tbody_bottom">#}
+{#                        <!--휴면 중분류-->#}
+{#                        <tr class="line_bottom">#}
+{#                            <td class="align_left table-width">휴면 중분류</td>#}
+{#                            <td class="align_left line_right1 table-width2">휴면 소분류</td>#}
+{#                            <td colspan="9"></td>#}
+{#                            <td>고객수</td>#}
+{#                        </tr>#}
+{#                    <!--//휴면 중분류-->#}
+{#    #}
+{#                    <!--활성전 고객-->#}
+{#                    <tr class="line_bottom">#}
+{#                        <td class="align_left table-width">활성전 고객</td>#}
+{#                        <td class="align_left line_right1 table-width2">잠재 고객</td>#}
+{#                        <td colspan="9"></td>#}
+{#                        <td>585.20 백 명</td>#}
+{#                    </tr>#}
+{#                    <!--//활성전 고객-->#}
+{#    #}
+{#                    <!--휴면 고객-->#}
+{#                    <tr>#}
+{#                        <td class="align_left table-width">휴면 고객</td>#}
+{#                        <td class="align_left line_right1 table_background table-width2">라이트 휴면</td>#}
+{#                        <td colspan="9" class="table_background"></td>#}
+{#                        <td class="table_background">215.34 백 명</td>#}
+{#                    </tr>#}
+{#                    <!--//휴면 고객-->#}
+{#    #}
+{#                    <!--휴면-->#}
+{#                    <tr>#}
+{#                        <td class="table-width"></td>#}
+{#                        <td class="align_left line_right1 table-width2">휴면</td>#}
+{#                        <td colspan="9"></td>#}
+{#                        <td>61.54 백 명</td>#}
+{#                    </tr>#}
+{#                    <!--//휴면-->#}
+{#                    </tbody>#}
+{#                </table>#}
+{#                #}
+{#            </table>#}
+{#        </div>#}
+{#    </div>#}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{#    <script src="/static/js/retailstore.js"></script>#}
+</body>
+</html>
+<script>
+$(function() {
+    // chart
+    const ctx = document.getElementById('myChart');
+        //const DATA_COUNT = 5;
+        //const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+        //const labels = Utils.months({count: 8});
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                //labels: ['기존 멤버', '신규 멤버', '기존 멤버, 기존 충성 고객', '기존 멤버, 복귀 고객', '신규 멤버, 신규 재구매 고객', '신규 멤버, 신규 첫구매 고객', '기존 멤버, 기존 안전 고객', '기존 멤버, 기존 재구매 고객'],
+                datasets: [{
+                    data: [{{ result.기존충성고객.고객수 }}, {{ result.기존안정고객.고객수 }}, {{ result.기존재구매고객.고객수 }}, {{ result.기존첫구매고객.고객수 }}, {{ result.복귀고객.고객수 }}],
+                    backgroundColor: [
+                    '#cb634a','#ffaa97','#fceae5','#e18570','#fcc3b6'
+                    ],
+                    labels: [
+                    '기존 멤버, 기존 충성 고객','기존 멤버, 기존 안정 고객', '기존 멤버, 기존 재구매 고객', '기존 멤버, 첫구매 고객', '기존 멤버, 복귀 고객'
+                    ],
+                    borderWidth: 0
+                }, {
+                    data: [{{ base_member }}, {{ new_member }}],
+                    backgroundColor: [
+                    '#aa452d','#2c79b2'
+                    ],
+                    labels: ['기존 멤버','신규 멤버'],
+                    borderWidth: 0
+                }
+                ]
+            },
+            options:{
+                plugins:{
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context){
+                                currentValue = context.raw
+
+                                var label = context.dataset.labels[context.dataIndex]
+
+                                total = context.chart._metasets[context.datasetIndex].total;
+
+                                var percentage = parseFloat((currentValue/total*100).toFixed(1));
+
+                                return label + ": " +currentValue + ' ( ' + percentage + ' %)';
+                            }
+                        },
+                        enabled: true
+                }
+            }
+        }
+        });
+});
+</script>

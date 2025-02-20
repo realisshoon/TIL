@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ㅤㅤ</title>
+    <link href="/static/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <div id="gdocsviewer" style="width: 1300px; height: 700px;"></div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script>
+    window.onload = function () {
+        file_web()
+        setTimeout(function() {
+            if (!confirm("파일이 정상적으로 열렸나요 ?")) {
+                location.reload(true);
+            }
+        }, 4000);
+    }
+
+    function file_web() {
+        var fileLink = "{{ ppt_url }}"
+        let ext = [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".pdf"];
+        const extLower = ext.map(extension => extension.toLowerCase());
+        const fileExtension = fileLink.toLowerCase().slice(fileLink.lastIndexOf("."));
+
+        if (extLower.includes(fileExtension)) {
+          location.replace(fileLink);
+        }else {
+            var embedLink = "https://docs.google.com/viewer?url=" + encodeURIComponent(fileLink) + "&embedded=true";
+            $('#gdocsviewer').append('<iframe src="' + embedLink + '" style="width:100%; height:100%;" frameborder="0"></iframe>');
+        }
+    }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+li { list-style: none; }
+a { text-decoration: none; }
+
+
+/* title */
+.tit{
+    margin-bottom: 5px;
+}
+
+.tit ul{
+    margin: 0 10px;
+}
+
+.tit>ul>li{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.tit>ul>li img{
+    width: 10%;
+    padding: 0px 0;
+}
+
+#main {
+    margin: 50px auto;
+    width: 800px;
+    overflow: hidden;
+}
+
+/* table */
+.table {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+/* thead */
+thead {
+    width: 100%;
+    color: #fff;
+    background-color: #7e0210;
+}
+
+thead tr{
+    padding: 15px;
+}
+
+thead tr th {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+thead tr th:nth-child(1){
+    width: 100px;
+}
+
+thead tr th:nth-child(2){
+    width: 200px;
+}
+
+thead tr th:nth-child(3){
+    width: 260px;
+}
+
+thead tr th:nth-child(4){
+    width: 300px;
+}
+
+thead th:last-child{
+    width: 30px;
+  }
+
+
+/* tbody */
+tbody{
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    background-color: #fff;
+}
+
+tr{
+    width: 100%;
+    vertical-align: top;
+    line-height: 2rem;
+}
+
+td{
+    padding: 10px 15px;
+    border: 1px dashed #7e0210;
+    font-size: 15px;
+    vertical-align : middle;
+ }
+
+ td a{
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    display: block;
+    line-height: 1;
+ }
+
+ td ul li{
+    /* margin: 10px 0; */
+    line-height: 1;
+    margin-bottom: 15px;
+ }
+
+ td ul li:last-child{
+    margin-bottom: 0;
+ }
+
+ /* arrow */
+  .arrow{
+    width: 20px;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  .material-symbols-rounded {
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    font-size: 20px !important;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 900,
+    'GRAD' 0,
+    'opsz' 48
+  }
+
+  .arrow_icon {
+    background-color: #7e0210;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    display: block;
+  }
+
+/* LOGO */
+.tableau_logo{
+    width: 95%;
+    margin: auto;
+    /* float: right;
+    transform: translateY(-15px); */
+    /* margin: 5px auto; */
+}
+
+.salesForce_logo{
+    width: 100%;
+    margin: auto;
+    /* float: right;
+    margin-top: 5px; */
+    /* margin: 5px auto; */
+
+}
+
+.department_line li{
+    margin-bottom: 18px;
+}
+
+.product li{
+    line-height: 19px;
+}
+
+.border_top td{
+    border-top: none;
+}

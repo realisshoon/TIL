@@ -1,0 +1,16 @@
+/* icon */
+.material-symbols-rounded {
+    color: brown;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
+
+/* main */
+#main {
+    margin: 80px auto;
+}

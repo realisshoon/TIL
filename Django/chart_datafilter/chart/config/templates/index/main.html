@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+
+thead th {
+  background-color: #f1f1c1;
+  position: sticky;
+  top: 0;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+  min-width: 70px;
+}
+
+th:first-child, td:first-child {
+  background-color: #f1f1c1;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+}
+
+th, td {
+  background-color: #f1f1f1;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+tr:nth-child(n+3) td {
+  height: 90px;
+}
+
+@media screen and (max-width: 600px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {margin: 0 0 1rem 0;}
+
+  tr:nth-child(odd) {
+    background: #f2f2f2;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  td:nth-of-type(1):before {content: "구분";}
+  td:nth-of-type(2):before {content: "1주차";}
+  td:nth-of-type(3):before {content: "2주차";}
+  td:nth-of-type(4):before {content: "3주차";}
+  td:nth-of-type(5):before {content: "4주차";}
+}
+
+</style>
+</head>
+<body>
+<div style="width:100%;max-width:1600px;height:auto;overflow:auto;">
+<table>
+  <tr id="my_month">
+
+  </tr>
+  <tr id="my_weekly">
+  </tr>
+  <tr id="venus_td">
+    <td  style="z-index: 9999">VENUS</td>
+  </tr>
+  <tr id="wacoal_td">
+    <td  style="z-index: 9999">WACOAL</td>
+  </tr>
+  <tr id="solb_td">
+    <td  style="z-index: 9999">SOLB</td>
+  </tr>
+
+</table>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script>
+  function weeksInMonth(year, month_number) {
+    var firstOfMonth = new Date(year, month_number-1, 1);
+    var lastOfMonth = new Date(year, month_number, 0);
+
+    var used = firstOfMonth.getDay() + lastOfMonth.getDate();
+
+    return Math.ceil( used / 7);
+}
+
+function printWeeksInYear(year) {
+    let html = "<th rowspan=\"2\" style=\"z-index: 9999\">구분</th>";
+    let weekly_html = ""
+    let td_html = ""
+    for (var month = 1; month <= 12; month++) {
+        html +=`<th colspan="${weeksInMonth(year, month)}">${month}월</th>`
+        weekly_html += weeklyFunc(weeksInMonth(year, month))
+        td_html += dataTdFunc(month, weeksInMonth(year, month))
+    }
+    $("#my_month").append(html)
+    $("#my_weekly").append(weekly_html)
+    $("#venus_td").append(td_html)
+    $("#wacoal_td").append(td_html)
+    $("#solb_td").append(td_html)
+}
+
+
+function weeklyFunc(week) {
+    let html = "";
+    for(let i=1; i<=week; i++) {
+        html += `<td style="background-color: #f1f1f1;">${i}주차</td>`
+    }
+    return html;
+}
+
+function dataTdFunc(month, week) {
+    let html = "";
+    for(let i=1; i<=week; i++) {
+        html += `<td id="${month}-${i}"></td>`
+    }
+    return html;
+}
+
+printWeeksInYear(2023);
+
+</script>
+</html>

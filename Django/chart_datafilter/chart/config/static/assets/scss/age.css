@@ -1,0 +1,205 @@
+body {
+  background-color: #F4F6FB;
+  padding: 20px 58px 50px 58px;
+  letter-spacing: -1.4px;
+  margin: 0 auto;
+}
+body .filter-area {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+body .filter-area #filterBtn {
+  padding: 9px 16px;
+  background-color: #D7E6FE;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+}
+body .filter-area #filterBtn p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+}
+body .filter-area .filter-wrap {
+  background-color: #fff;
+  border-radius: 6px;
+  max-width: 360px;
+  width: 100%;
+  height: 800px;
+  overflow-y: scroll;
+  position: absolute;
+  top: 90%;
+  right: 0%;
+  z-index: 99;
+  box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.7019607843);
+  display: none;
+}
+body .filter-area .filter-wrap .tit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 25px;
+  border-bottom: 1px solid #D9D9D9;
+}
+body .filter-area .filter-wrap .tit p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2D2D2D;
+}
+body .filter-area .filter-wrap .tit span {
+  cursor: pointer;
+}
+body .filter-area .filter-wrap .filter-group {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+body .filter-area .filter-wrap .filter-group .filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+body .filter-area .filter-wrap .filter-group .filter label {
+  font-size: 16px;
+  color: #2D2D2D;
+}
+body .filter-area .filter-wrap .filter-group .filter select {
+  width: 100%;
+  padding: 10px 8px;
+  border-radius: 5px;
+  border: 1px solid #CACACA;
+  font-size: 14px;
+  color: #7e7e7e;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  background: url("/static/image/arrow.svg") no-repeat 98% center;
+  cursor: pointer;
+}
+body .filter-area .filter-wrap .filter-group .filter .data {
+  background: #F4F8FE;
+  border: 1px solid #156CF1;
+  color: #156CF1;
+}
+body .filter-area .filter-wrap .filter-group .filter .date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+body .filter-area .filter-wrap .filter-group .filter .date input {
+  width: 45.5%;
+  padding: 8px 4px;
+  border-radius: 5px;
+  border: 1px solid #CACACA;
+  font-size: 14px;
+  color: #7e7e7e;
+  cursor: pointer;
+}
+body .filter-area .filter-wrap .filter-group button {
+  padding: 13px 30px;
+  background-color: #156CF1;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+}
+body .dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+body .dashboard .layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+}
+body .dashboard .layout .box {
+  padding: 30px;
+  border-radius: 7px;
+  background-color: #fff;
+}
+body .dashboard .layout .box h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  padding-bottom: 26px;
+  border-bottom: 1px solid #D9D9D9;
+}
+body .dashboard .layout .rank {
+  max-width: 405px;
+  width: 100%;
+}
+body .dashboard .layout .rank .rank-list {
+  margin-top: 20px;
+}
+body .dashboard .layout .rank .rank-list li {
+  line-height: 16px;
+  font-size: 16px;
+  color: #000;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+body .dashboard .layout .rank .rank-list li:hover {
+  background-color: #F4F6FB;
+  border-radius: 4px;
+  cursor: pointer;
+}
+body .dashboard .layout .rank .rank-list li p b {
+  margin-right: 20px;
+}
+body .dashboard .layout .rank .rank-list li span {
+  color: #7F7F7F;
+}
+body .dashboard .layout .rank .rank-list li:first-child p b {
+  color: #FF5963;
+}
+body .dashboard .layout .rank .rank-list li:nth-child(2) p b {
+  color: #FF8D82;
+}
+body .dashboard .layout .rank .rank-list li:nth-child(3) p b {
+  color: #FFB91B;
+}
+body .dashboard .layout .chart {
+  max-width: 1360px;
+  width: 100%;
+}
+body .dashboard .layout .chart .summary-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 70px;
+  padding: 20px 0;
+}
+body .dashboard .layout .chart .summary-wrap .summary {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+body .dashboard .layout .chart .summary-wrap .summary span {
+  font-size: 14px;
+  font-weight: 300;
+}
+body .dashboard .layout .chart .summary-wrap .summary p {
+  font-size: 18px;
+  font-weight: 700;
+}
+body .dashboard .layout .chart .summary-wrap .summary a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+body .dashboard .layout .one {
+  max-width: 1920px;
+}
+
+/*# sourceMappingURL=age.css.map */

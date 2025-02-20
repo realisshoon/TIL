@@ -1,0 +1,18 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#filter-button").click(function(){
+    var productCode = $("#product_code").val(); // Assume you have an input field for product code
+    $.ajax({
+      url: '/filter-data/',
+      data: {
+        'product_code': productCode
+      },
+      dataType: 'json',
+      success: function (data) {
+        console.log(data); // Handle the data, update HTML
+      }
+    });
+  });
+});
+</script>
