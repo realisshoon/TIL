@@ -1,0 +1,13 @@
+{
+  "editor.inlineSuggest.enabled": false,  // 코드 자동 제안 비활성화
+  "editor.suggest.showWords": false,  // 단어 추천 끄기
+  "editor.suggest.showSnippets": false,  // 코드 스니펫 추천 끄기
+  "editor.suggest.showFunctions": false,  // 함수 추천 끄기
+  "[python]": {
+    "editor.autoClosingBrackets": "never",
+    "editor.indentSize": "tabSize"
+  },
+  "jupyter.notebooks.enabled": true, // Jupyter UI 설정   
+  "notebook.directory.root": "${workspaceFolder}",
+  "jupyter.interactiveWindow.creationMode": "perFile" // Jupyter 노트북 루트 설정
+}
